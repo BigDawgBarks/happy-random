@@ -25,6 +25,16 @@ alias llmct="llm chat --model gpt-4-turbo --system '$SYSTEM_PROMPT'"
 EOF
 . ~/.bashrc
 llm keys set openai
+llm keys set claude
+
+# Install neovim and vim-plug
+sudo apt install neovim
+mkdir -p ~/.config/nvim
+sh -c 'curl -fLo ~/.config/nvim/init.vim --create-dirs \
+   https://raw.githubusercontent.com/mywang-berk/happy-random/master/vimrc'
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 
 exit 0;
 }
