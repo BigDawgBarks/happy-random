@@ -28,6 +28,8 @@ llm keys set openai
 llm keys set claude
 
 # Install neovim and vim-plug
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt update
 sudo apt install neovim
 mkdir -p ~/.config/nvim
 sh -c 'curl -fLo ~/.config/nvim/init.vim --create-dirs \
