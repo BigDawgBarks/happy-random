@@ -37,6 +37,8 @@ sh -c 'curl -fLo ~/.config/nvim/init.vim --create-dirs \
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
+# CR-soon mywang: delete the bashrc bits and move those to bashrc
+# CR-someday mywang: add steps for installing firacode and setting up vim kickstart
 
 exit 0;
 }

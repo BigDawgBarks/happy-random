@@ -15,6 +15,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" :TsInstall json php python
+Plug 'nvim-lua/plenary.nvim'
+Plug 'ccaglak/namespace.nvim'
 
 call plug#end()
 
@@ -28,9 +32,17 @@ nmap <leader>s <Plug>(easymotion-s)
 onoremap il :<c-u>normal! 0v$h<cr>
 vnoremap il :<c-u>normal! 0v$h<cr>
 
+"for namespace.nvim
+nmap <leader>la <cmd>GetClasses<cr>
+nmap <leader>lc <cmd>GetClass<cr>
+nmap <leader>ls <cmd>ClassAs<cr>
+nmap <leader>ln <cmd>Namespace<cr>
+
+" set font
+set guifont=FiraCode\ Nerd\ Font:h12
+
 " lsp server for jumping to definitions and references
 lua << EOF
-require'lspconfig'
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.intelephense.setup{}
 require'lspconfig'.jdtls.setup{
