@@ -31,6 +31,7 @@ llm keys set claude
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update
 sudo apt install neovim
+sudo apt install luarocks
 mkdir -p ~/.config/nvim
 sh -c 'curl -fLo ~/.config/nvim/init.vim --create-dirs \
    https://raw.githubusercontent.com/mywang-berk/happy-random/master/vimrc'
