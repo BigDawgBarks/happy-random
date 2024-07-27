@@ -41,5 +41,9 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 # CR-soon mywang: delete the bashrc bits and move those to bashrc
 # CR-someday mywang: add steps for installing firacode and setting up vim kickstart
 
+# CR-someday mywang: expand this to handle setting up tmux.conf
+# Set up tmux-plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 exit 0;
 }

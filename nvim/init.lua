@@ -13,7 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- This has to be set before initializing lazy
-vim.g.mapleader = " "
+vim.g.mapleader = ","
 
 -- Initialize lazy with dynamic loading of anything in the plugins directory
 require("lazy").setup("plugins", {
