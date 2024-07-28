@@ -8,6 +8,7 @@ keymap.set("n", "<leader>wq", ":wq<CR>") -- save and quit
 keymap.set("n", "<leader>qq", ":q!<CR>") -- quit without saving
 keymap.set("n", "<leader>ww", ":w<CR>") -- save
 keymap.set("n", "gx", ":!open <c-r><c-a><CR>") -- open URL under cursor
+keymap.set("i", "jk", "<Esc>")
 
 -- Split window management
 keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
@@ -115,3 +116,10 @@ keymap.set("n", '<leader>df', '<cmd>Telescope dap frames<cr>')
 keymap.set("n", '<leader>dh', '<cmd>Telescope dap commands<cr>')
 keymap.set("n", '<leader>de', function() require('telescope.builtin').diagnostics({default_text=":E:"}) end)
 
+-- Fuzzy find
+keymap.set("n", '<leader>f', ":Files<CR>")
+keymap.set("n", '<leader>b', ":Buffers<CR>")
+
+-- Easymotion
+keymap.set("n", '<leader>w', "<Plug>(easymotion-overwin-w)")
+keymap.set("n", '<leader>s', "<Plug>(easymotion-s)")
