@@ -21,7 +21,7 @@ then
 fi
 
 # Read each line from the CSV file
-while IFS='|' read -r front back
+while IFS=',' read -r front back
 do
     # JSON payload for AnkiConnect
     json_payload=$(cat <<EOF

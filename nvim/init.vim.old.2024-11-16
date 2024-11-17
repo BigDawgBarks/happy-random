@@ -38,10 +38,10 @@ onoremap il :<c-u>normal! 0v$h<cr>
 vnoremap il :<c-u>normal! 0v$h<cr>
 
 "for namespace.nvim
-nmap <leader>la <cmd>GetClasses<cr>
-nmap <leader>lc <cmd>GetClass<cr>
-nmap <leader>ls <cmd>ClassAs<cr>
-nmap <leader>ln <cmd>Namespace<cr>
+"nmap <leader>la <cmd>GetClasses<cr>
+"nmap <leader>lc <cmd>GetClass<cr>
+"nmap <leader>ls <cmd>ClassAs<cr>
+"nmap <leader>ln <cmd>Namespace<cr>
 
 " set font
 set guifont=FiraCode\ Nerd\ Font:h12
@@ -673,6 +673,19 @@ require("lazy").setup({
     end
   end,
   },
+  { -- PLUGIN: namespace.vim
+    ft = { 'php' },
+    'ccaglak/namespace.nvim',
+    keys = {
+        { '<leader>lc', '<cmd>lua require("namespace.getClass").get()<cr>',   { desc = 'GetClass' } },
+        { '<leader>la', '<cmd>lua require("namespace.getClasses").get()<cr>', { desc = 'GetClasses' } },
+        { "<leader>ls", '<cmd>lua require("namespace.classAs").open()<cr>', { desc = 'ClassAs' } },
+        { "<leader>ln", '<cmd>lua require("namespace.namespace").gen()<cr>', { desc = 'Generate Namespace' } },
+    },
+    dependencies = {
+        "nvim-lua/plenary.nvim"
+    }
+  }, 
 }
   },
   -- Configure any other settings here. See the documentation for more details.
@@ -731,7 +744,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'ccaglak/namespace.nvim'
+"Plug 'ccaglak/namespace.nvim'
+Plug 'jwalton512/vim-blade'
 
 call plug#end()
 autocmd VimEnter * PlugInstall

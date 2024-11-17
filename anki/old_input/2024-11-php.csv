@@ -1,0 +1,83 @@
+special start/end instructions for php,"<?php, ?> (closing tag sometimes excluded from scripts to avoid unexpected behavior with text buffering)"
+short echo tag,"<?=, short for <?php echo"
+$_SERVER,"superglobal php variable containing web server information e.g. user agent"
+how to retrieve type of foo,get_debug_type($foo)
+dump value and type of foo,var_dump($foo)
+cast foo into some type,settype($foo, type)
+intersection type,"a value that can be interpreted as any of multiple types (type1 & type2)"
+union type,"a value that is at least one of multiple types (type1 | type2)"
+`mixed` type,alias for union of all types
+type of unset() and undefined variables,null
+what is a PHP array and what is its syntax,"array actually is an ordered map with int or string . syntax [key1 => value1, …] or array(key1 => value1, …). no keys -> defaults to 0-indexed int keys"
+syntax for unpacking an array,"…$arr, e.g. $arr1 = [1, 2, 3]; $arr2 = [ …$arr1, 4]; // [1, 2, 3, 4]"
+how are arrays and objects converted between each other,key-value mappings are isomorphic to properties
+what is the enum syntax,"enum syntax: e.g. `enum Color {case Red; case Green; case Blue;}`, `$val = Color::Red;`"
+syntax/rules for variable names,"name preceded by dollar sign, e.g. $foo for variable called foo. any sequence of bytes can be a variable name"
+syntax for assigning variable by reference,$foo = &$bar
+syntax for including another file,include foo.inc;
+what is the `global` keyword,"required before using a global scope function in a local (e.g. function) scope"
+what is `$GLOBALS`,superglobal array storing all global variables
+what are static variable semantics,"only available within its scope, but maintains continuity/value even on exiting/reentering said scope"
+what is the constant syntax,"const foo = <val>; no $ required for access"
+magic constant for current line number,__LINE__
+magic constant for current file path and directory,"__FILE__, __DIRECTORY__"
+magic content for containing class method and function,"__CLASS__, __METHOD__, __FUNCTION__"
+what is the value of an assignment statement,"as an expression, $foo = BAR; evaluates to the value of BAR"
+semantics of === and !==,"check for same value and same type for primitives; same instance for class objects"
+how to execute an expression in shell,surround in backticks
+string concatenation operator,s1 . s2
+array union operator,arr1 + arr2
+how to check if $foo is instance of type Bar,$foo instanceof Bar
+if for and while syntax,"C-like (tab/colon/endwhile/endif/endfor syntax also supported)"
+foreach syntax,"foreach ($arr as [$key =>] &$value) {...} unset($value); // must unset iterator element(s) at end"
+require vs include,"failed require results in error; failed include results in warning"
+include_once and require_once,guarantees will be imported exactly once
+function syntax,"function foo($arg1, …) { … } // higher-older functions supported"
+variadic function syntax,"function foo($args) { expr($args[i]); ... }"
+named function arguments,foo(paramName : <value>);
+variable functions example,"$foo = ""bar""; $foo(); // evaluates bar()"
+anonymous function aka closure syntax,"function($arg1, …) { … }"
+how to capture variables from parent scope in closure,"function () use (&$var_from_parent_scope) { ... }"
+how to refer to containing class instance within closure,$this
+static vs non-static closure,"`static function() {...}` within class implies no $this binding"
+arrow function syntax,"fn (arg_list) => expr // automatic capture of parent class vars by value"
+default passing method for objects,pass by reference
+class syntax,"class Foo { /* constants, vars, functions */ }"
+how to make a class read-only and restrictions,"`readonly class Foo {...}` // cannot declare untyped or static properties, all child classes must also be readonly"
+how to instantiate a class,"must always use `new`, e.g. $instance = new Foo();"
+how to define a constructor,public function __construct() {...}
+how to declare a child class,class Foo extends Bar { … }
+how to access parent class version of overridden property,parent::property
+how to mark a property as unable to be overridden by child classes,final
+how to get fully qualified name of class Foo,"Foo::class // Namespace\Foo, evaluated at compile time"
+How to access non-static property of a class,foo_instance->property
+How to access a class property in a nullsafe way,Foo?->property // returns null instead of throwing if property is null
+How to access static property of class,Foo::$property
+read-only property syntax and restrictions,"public readonly type foo; may only be set once; cannot be declared and defined in the same statement since that's equivalent to a function; cannot be unset"
+dynamic properties,created when one tries to assign to a non-existent property
+how to use autoloader,"`spl_autoload_register(function($className) { … });` if php finds an undefined class, it will try to include it via autoloader before raising"
+how does constructor property promotion work,public function __construct([public|protected|private] type foo) {} // foo is interpreted as both a parameter and a property. any one modifier (e.g. readonly) is enough to promote a property
+destructor syntax,function __destruct() { … }
+how are parent constructor/destructor called in child class,parent::__construct(); or parent::__destruct(); must be called explicitly (won't run implicitly)
+how does asymmetric visibility work,"can set separate visibilities for read/write; e.g. public private(set) string $property; set permissiveness must be less than or equal to get permissiveness"
+default visibility for method,public
+syntax for and meaning of abstract class,"abstract class Foo {...} // no instantiation, must contain at least one abstract (non-implemented) class"
+difference between interfaces and abstract classes,"interfaces: used with `implements` instead of `extends`, one class can implement multiple interfaces, interfaces must have no implementations or constructor or data members"
+trait syntax and behavior,"trait FooTrait { /* members */ } class Bar { use FooTrait; … } // Bar gets all members defined in FooTrait without inheritance (order of precedence: directly defined members > trait members > inherited members). Traits have most powers of classes (visibility, composition, etc) except instantiation"
+how to resolve namespace conflicts between multiple traits,"`insteadof` to include a symbol from one class and not the other, `as` to alias a symbol"
+anonymous class syntax,new class {...}
+how to specify special behavior when getting/setting/etc a class property,"define __get(), __set(), __isset(), __unset() functions"
+what happens if you run a foreach on an object,iterates through all visible properties as key-value pairs by default
+how to prevent a property from being overridden,`final` keyword
+how to define a copy constructor for an object,define __clone()
+syntax for declaring a namespace,"`namespace foo\bar;` or `namespace Baz {...}` (case-insensitive)"
+syntax for using or aliasing a namespace,use My\Namespace as Name;
+how to set highest level of error reporting (for development/debugging),set error_reporting to E_ALL
+how to throw exception,throw
+how to catch exception,try catch finally
+what are fibers,interruptible functions with their own call stacks that may be suspended and resumed from anywhere (except destructors)
+how to suspend fiber,Fiber::suspend($fibername)
+how to start/resume a fiber,"$fiber->start(), $fiber->resume()"
+generator syntax,"like function, but with yield instead of return; may be used in foreach"
+attribute semantics and syntax,"#[Attribute] class AttributeName {}, #[AttributeName] class Foo {...} // allow adding metadata (accessible via reflection api) to any declaration (class, function, constant, etc)"
+underlying implementation of references,symbol tables (not pointers)

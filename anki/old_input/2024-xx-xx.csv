@@ -1,0 +1,55 @@
+What is the Neovim command to remap escape in insert mode?|inoremap jk <Esc>
+How to remap the leader key in Neovim?|let mapleader = ','
+How to enable syntax highlighting in Neovim?|syntax on
+How to show line numbers in Neovim?|set number
+How to disable swapfile in Neovim?|set noswapfile
+How to highlight all search results in Neovim?|set hlsearch
+How to ignore case in search in Neovim?|set ignorecase
+How to show search results as you type in Neovim?|set incsearch
+How to highlight misspelled words in Neovim?|set spelllang=en_us
+What do the modifiers 'i' and 'a' mean in Neovim commands?|i = inside, a = around
+What are the Neovim nouns for word sentence paragraph and XML tag?|w = word, ) = sentence, } = paragraph, t = XML tag
+How to save a file to a specific path in Neovim?|:saveas <path>
+What are the faster alternatives to :wq in Neovim?|ZZ or :x
+How to move forward or backward by a big word in Neovim?|W = forward, B = backward
+How to search for other instances of the word under the cursor in Neovim?|*
+Where is the location for Neovim config file?|/.config/nvim/init.vim
+How to move to the top middle and bottom of the screen in Neovim?|H = top, M = middle, L = bottom
+How to navigate pages up and down in Neovim?|Ctrl-f = page up, Ctrl-b = page down
+How to jump forward and backward in navigation history in Neovim?|Ctrl-i = forward, Ctrl-o = backward
+How to scroll up and down one line at a time in Neovim?|Ctrl-e = scroll up, Ctrl-y = scroll down
+How to insert at the beginning of a line in Neovim?|I
+How to append at the end of a line in Neovim?|A
+How to replace the character under the cursor and keep typing in Neovim?|R
+How to change the rest of the current line in Neovim?|C
+How to substitute the entire current line in Neovim?|S
+How to change inside a sentence or paragraph in Neovim?|cis = change inside sentence, cip = change inside paragraph
+How to change the case of character under cursor or highlighted text in Neovim?|~
+How to set highlighted text to uppercase or lowercase in Neovim?|U = uppercase, u = lowercase
+How to format based on textwidth in Neovim?|gq
+How to delete the character before the cursor in Neovim?|X
+How to delete till the end of the line in Neovim?|D
+How to join the current line with the next in Neovim?|J
+How to repeat the previous action in Neovim?|.
+How to repeat the previous action multiple times in Neovim?|5. (replace 5 with desired number)
+How to mark a misspelled word as correct or a correct word as misspelled in Neovim?|zg = mark misspelled word correct, zw = mark correct word misspelled
+How to turn spelling on and off in Neovim?|:set spell = on, :set nospell = off
+How to delete everything inside quotes parentheses or brackets in Neovim?|di' = single quotes, di\" = double quotes, di( = parentheses, di{ = curly braces, di[ = square brackets, di< = angle brackets
+How to start and stop recording a macro in register 'a' in Neovim?|qa = start recording, q = stop recording
+How to replay a macro in register 'a' in Neovim?|@a
+How to replay a macro on a set of highlighted lines in Neovim?|:normal @a
+How to move to the next or previous buffer in Neovim?|:bn or :bnext = next, :bp or :bprevious = previous
+How to close the current buffer in Neovim?|:bd or :bdelete
+How to split the current window horizontally or vertically in Neovim?|Ctrl-w s or :split = horizontally, Ctrl-w v or :vsplit = vertically
+How to cycle through open windows in Neovim?|Ctrl-w w
+How to close the current window in Neovim?|Ctrl-w q
+How to make all windows equal height and width in Neovim?|Ctrl-w =
+How to navigate between windows in Neovim?|Ctrl-w h = left, Ctrl-w j = down, Ctrl-w k = up, Ctrl-w l = right
+How to open a new tab (optionally with a file) in Neovim?|:tabnew or :tabnew {file}
+How to navigate between tabs in Neovim?|gt = next tab, gT = previous tab
+How to close the current tab in Neovim?|:tabclose
+How to yank into and paste from a specific register in Neovim?|\"ay = yank into register a, \"ap = paste from register a
+How to see all registers in Neovim?|:reg
+How to yank and paste using the system clipboard in Neovim?|+y = yank to system clipboard, +p = paste from system clipboard
+How to paste content from n yanks ago in Neovim?|\"{N}p (replace N with a number from 0-9)
+How to remap a key in normal or insert mode in Neovim's init.vim?|nnoremap <key> <command> for normal mode, inoremap <key> <command> for insert mode
