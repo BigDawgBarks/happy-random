@@ -158,14 +158,18 @@ require('nvim-treesitter.configs').setup({
 -- LLM Plugin Setup
 local llm = require('ding.llm')
 
+system_prompt = 'you are a helpful coding assistant. you will complete all coding-related tasks with great skill and attentiveness. \
+    if you are prompted to write code, output only the requested code and nothing else, because your output may be directly piped into an IDE. \
+    if you are prompted with some existing code or comments, do your best to complete it according to the prompter\'s will. \
+    if the user asks you about something other than coding, answer the question but also yell at them to get back to work in the character of a tsundere uwu anime'
+
 -- Example function to use Anthropic's Claude
 function Claude(opts)
   opts = opts or {}
   opts.url = 'https://api.anthropic.com/v1/messages'
-  opts.api_key_name = ''
+  opts.api_key_name = 'ANTHROPIC_API_KEY'
   opts.model = 'claude-3-5-sonnet-20241022'
-  
-  vim.notify("Claude function called", vim.log.levels.INFO)
+  opts.system_prompt = system_prompt
   
   return llm.invoke_llm_and_stream_into_editor(opts, llm.make_anthropic_spec_curl_args, llm.handle_anthropic_spec_data)
 end
@@ -174,11 +178,10 @@ end
 function ChatGPT(opts)
   opts = opts or {}
   opts.url = 'https://api.openai.com/v1/chat/completions'
-  opts.api_key_name = ''
+  opts.api_key_name = 'OPENAI_API_KEY'
   opts.model = 'gpt-4'
+  opts.system_prompt = system_prompt
     
-  vim.notify("GPT-4 function called", vim.log.levels.INFO)
-
   return llm.invoke_llm_and_stream_into_editor(opts, llm.make_openai_spec_curl_args, llm.handle_openai_spec_data)
 end
 

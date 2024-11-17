@@ -13,8 +13,8 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 # Install simonw/llm
-sudo apt install python3-pip
-pip install llm
+sudo apt install pipx
+pipx install llm
 llm install llm-claude-3
 echo <<'EOF' >> ~/.bashrc
 export PATH=$PATH:/home/mywang/.local/bin'

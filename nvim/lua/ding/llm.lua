@@ -53,7 +53,7 @@ end
 
 function M.make_anthropic_spec_curl_args(opts, prompt, system_prompt)
   local url = opts.url
-  local api_key = opts.api_key_name -- and get_api_key(opts.api_key_name)
+  local api_key = opts.api_key_name and get_api_key(opts.api_key_name)
   local data = {
     system = system_prompt,
     messages = { { role = 'user', content = prompt } },
@@ -74,7 +74,7 @@ end
 
 function M.make_openai_spec_curl_args(opts, prompt, system_prompt)
   local url = opts.url
-  local api_key = opts.api_key_name -- and get_api_key(opts.api_key_name)
+  local api_key = opts.api_key_name and get_api_key(opts.api_key_name)
   local data = {
     messages = { { role = 'system', content = system_prompt }, { role = 'user', content = prompt } },
     model = opts.model,
@@ -152,11 +152,8 @@ local group = vim.api.nvim_create_augroup('DING_LLM_AutoGroup', { clear = true }
 local active_job = nil
 
 function M.invoke_llm_and_stream_into_editor(opts, make_curl_args_fn, handle_data_fn)
-  vim.notify("Starting LLM invocation with opts: " .. vim.inspect(opts), vim.log.levels.INFO)
-  vim.notify("API URL: " .. (opts.url or "nil"), vim.log.levels.INFO)
   vim.api.nvim_clear_autocmds { group = group }
   local prompt = get_prompt(opts)
-  vim.notify("Got prompt: " .. vim.inspect(prompt), vim.log.levels.INFO)
   local system_prompt = opts.system_prompt or 'You are a tsundere uwu anime. Yell at me for not setting my configuration for my llm plugin correctly'
   local args = make_curl_args_fn(opts, prompt, system_prompt)
   local curr_event_state = nil
