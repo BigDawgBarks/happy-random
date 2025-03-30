@@ -91,11 +91,6 @@ if prompt_section "AI tools (llm CLI with Claude and OpenAI support)"; then
     else
         echo "llm already installed, skipping..."
     fi
-
-    # Set up API keys
-    echo "Setting up API keys for LLM services..."
-    llm keys set openai "$openai_key"
-    llm keys set claude "$claude_key"
 fi
 
 # Section 4: Editor setup
@@ -178,4 +173,7 @@ echo ""
 echo "Setup complete! You may need to restart your shell for some changes to take effect."
 echo "To apply all changes now, run: source ~/.bashrc"
 echo "For the best experience, consider starting a new terminal session."
+echo "Remember to set up your llm API keys with:"
+echo "  llm keys set openai" 
+echo "  llm keys set claude"
 }
