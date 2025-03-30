@@ -94,15 +94,8 @@ if prompt_section "AI tools (llm CLI with Claude and OpenAI support)"; then
 
     # Set up API keys
     echo "Setting up API keys for LLM services..."
-    read -p "Enter OpenAI API key (or press Enter to skip): " openai_key
-    if [ -n "$openai_key" ]; then
-        llm keys set openai "$openai_key"
-    fi
-
-    read -p "Enter Claude API key (or press Enter to skip): " claude_key
-    if [ -n "$claude_key" ]; then
-        llm keys set claude "$claude_key"
-    fi
+    llm keys set openai "$openai_key"
+    llm keys set claude "$claude_key"
 fi
 
 # Section 4: Editor setup
